@@ -1,0 +1,6 @@
+export const allowedIps = [
+  {
+    name: 'example_name',
+    IPs: ['123.123.123.123/32'],
+  },
+];
