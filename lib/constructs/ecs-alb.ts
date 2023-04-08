@@ -30,6 +30,8 @@ interface ECSALBProps {
 export class ApplicationLoadBalancedECS {
   constructor(scope: Construct, props: ECSALBProps) {
     const gitlabTeloxideSecret = new SMSecret(scope, 'GITLAB_TELOXIDE_SECRET');
+    const githubTeloxideSecret = new SMSecret(scope, 'GITHUB_TELOXIDE_SECRET');
+    const beepTeloxideSecret = new SMSecret(scope, 'BEEP_TELOXIDE_SECRET');
     const trelloTeloxideSecret = new SMSecret(scope, 'TRELLO_TELOXIDE_SECRET');
     const dbUrlSecret = new SMSecret(scope, 'DB_URL_SECRET');
 
@@ -69,6 +71,10 @@ export class ApplicationLoadBalancedECS {
             secrets: {
               GITLAB_TELOXIDE_TOKEN:
                 Secret.fromSecretsManager(gitlabTeloxideSecret),
+              GITHUB_TELOXIDE_TOKEN:
+                Secret.fromSecretsManager(githubTeloxideSecret),
+              BEEP_TELOXIDE_TOKEN:
+                Secret.fromSecretsManager(beepTeloxideSecret),
               TRELLO_TELOXIDE_TOKEN:
                 Secret.fromSecretsManager(trelloTeloxideSecret),
               DATABASE_URL: Secret.fromSecretsManager(dbUrlSecret),
